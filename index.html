@@ -1,14 +1,75 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <header>
+        <h1>3D Portfolio</h1>
+        <nav>
+            <button id="models-btn" class="active">Models</button>
+            <button id="animations-btn">Animations</button>
+        </nav>
+    </header>
+
+    <main>
+        <div id="viewer-container">
+            <canvas id="c"></canvas>
+        </div>
+
+        <div id="controls-container">
+            <!-- Model Controls -->
+            <div id="model-controls" class="controls active">
+                <h2>Model Controls</h2>
+                <div class="control-group">
+                    <label for="shading-toggle">View Mode:</label>
+                    <button id="shading-btn" class="active">Shading</button>
+                    <button id="wireframe-btn">Wireframe</button>
+                </div>
+                <div class="control-group">
+                    <label for="lighting-select">Lighting:</label>
+                    <select id="lighting-select">
+                        <option value="neutral">Neutral</option>
+                        <option value="dramatic">Dramatic</option>
+                        <option value="spotlight">Spotlight</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Animation Controls -->
+            <div id="animation-controls" class="controls">
+                <h2>Animation Controls</h2>
+                <div class="control-group">
+                    <label for="animation-select">Animation Clip:</label>
+                    <select id="animation-select">
+                        <option>None</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <button id="play-pause-btn">Play</button>
+                    <label>
+                        <input type="checkbox" id="loop-checkbox" checked> Loop
+                    </label>
+                </div>
+                <div class="control-group">
+                    <label for="timeline-slider">Timeline:</label>
+                    <input type="range" id="timeline-slider" min="0" max="100" value="0">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script type="module" src="main.js"></script>
 </body>
 </html>
